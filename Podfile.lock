@@ -1,0 +1,44 @@
+PODS:
+  - Charts (3.1.1):
+    - Charts/Core (= 3.1.1)
+  - Charts/Core (3.1.1)
+  - M13Checkbox (3.2.2)
+  - Nimble (7.3.0)
+  - Quick (1.3.1)
+  - Realm (3.9.0):
+    - Realm/Headers (= 3.9.0)
+  - Realm/Headers (3.9.0)
+  - RealmSwift (3.9.0):
+    - Realm (= 3.9.0)
+  - SnapKit (4.0.0)
+
+DEPENDENCIES:
+  - Charts
+  - M13Checkbox
+  - Nimble
+  - Quick
+  - RealmSwift
+  - SnapKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Charts
+    - M13Checkbox
+    - Nimble
+    - Quick
+    - Realm
+    - RealmSwift
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
+  M13Checkbox: a8c2491cfbbca10797925fd0b9154a782bf40d89
+  Nimble: c8d6a1f463701921c46de965c673e13cafa09196
+  Quick: d17304d58d0d169dd0bd1c6e5c28e3318de32a1a
+  Realm: 3d36f208bf3aff8335dc3298742140182bde4edb
+  RealmSwift: aa4d11917bfcfaa3ed51f219102a487ecd895447
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+
+PODFILE CHECKSUM: e596e2df9b5c4c46ca065acf5e81cdc834bae11a
+
+COCOAPODS: 1.5.3
