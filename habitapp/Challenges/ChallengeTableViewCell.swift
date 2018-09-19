@@ -9,12 +9,15 @@
 import Foundation
 import UIKit
 
+protocol ChallengeTableCellView {
+    
+}
+
 class ChallengeTableViewCell : UITableViewCell {
     static let reuseId = "ChallengeTableViewCell"
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateStartedLabel: UILabel!
-
     @IBOutlet var progressBar: UIProgressView!
     
     func configure(title: String?, dateStarted: Date, progress: Double) {

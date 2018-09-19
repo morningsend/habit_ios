@@ -45,13 +45,6 @@ class ChallengeProgressTableViewController : UITableViewController {
             withIdentifier: ChallengeProgressTableCell.reuseId,
             for: indexPath
         ) as! ChallengeProgressTableCell
-        cell.progressDelegate = self
         return cell
-    }
-}
-
-extension ChallengeProgressTableViewController : ChallengeProgressActions {
-    func markDown(day: Int) {
-        tapticGenerator?.selectionChanged()
     }
 }

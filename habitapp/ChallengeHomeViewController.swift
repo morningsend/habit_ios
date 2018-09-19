@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ChallengeHomeViewController: UITableViewController {
     var emptyView: UIView!
@@ -22,10 +23,44 @@ class ChallengeHomeViewController: UITableViewController {
         tableView.backgroundColor = UIColor.black
         
         emptyView = EmptyChallengeView(frame: view.frame, label: "No challenges yet. Tap the plus button above to set one.")
+        setupTitle()
+    }
+    var addButton: UIButton!
+    
+    private func setupTitle() {
+        guard self.navigationController != nil else {
+            return
+        }
+        
+        addButton = UIButton(type: .system)
+        addButton.tintColor = UIColor.white
+        addButton.backgroundColor = UIColor.darkGray
+        addButton.setTitle("+", for: .normal)
+        addButton.layer.cornerRadius = 16.0
+        let container = (self.navigationController?.navigationBar)!
+        
+        container.items?.forEach({ (item) in
+            item.rightBarButtonItem?.tintColor = UIColor.clear
+        })
+        
+        container.addSubview(addButton)
+        
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.snp.makeConstraints { (make) in
+            make.width.equalTo(32)
+            make.height.equalTo(32)
+            make.right.equalTo(container).offset(-16)
+            make.bottom.equalTo(container).offset(-16)
+        }
+        addButton.alpha = 0.0
+        addButton.isEnabled = false
+        addButton.addTarget(self,
+                            action: #selector(showNewChallengeView(sender:)),
+                            for: .touchUpInside)
     }
     
     func setupTableView() {
-        self.tableView.delegate = self
+        tableView.showsVerticalScrollIndicator = false
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,6 +77,16 @@ class ChallengeHomeViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Today"
+    }
+    
+    @objc func showNewChallengeView(sender: Any) {
+        if let vc = NewChallengeViewController.instantiateFromMainStoryboard() {
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -51,11 +96,14 @@ class ChallengeHomeViewController: UITableViewController {
             self.view = self.tableView
             self.tableView.reloadData()
         }
+        addButton.alpha = 1.0
+        addButton.isEnabled = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        addButton.alpha = 0.0
+        addButton.isEnabled = false
     }
     
     override func didReceiveMemoryWarning() {

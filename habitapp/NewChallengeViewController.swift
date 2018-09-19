@@ -9,26 +9,44 @@
 import Foundation
 import UIKit
 
+class TextFieldPickerInputDelegate : NSObject, UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
+    }
+}
+
 class NewChallengeViewController : UIViewController {
+    
+    static func instantiateFromMainStoryboard() -> NewChallengeViewController? {
+        return UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(
+                withIdentifier: String(describing: NewChallengeViewController.self)
+            )
+            as? NewChallengeViewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setupUI()
     }
     
-    @IBOutlet var durationPicker: UIPickerView!
-    @IBOutlet var durationButton: UIButton!
+    var durationPicker: UIPickerView!
+    
     @IBOutlet var titleField: UITextField!
     @IBOutlet var createButton: UIButton!
     @IBOutlet var cancelBarButton: UIBarButtonItem!
+    @IBOutlet var durationField: UITextField!
     
     var selectedDurationDays: Int? = nil
     var challengeTitle: String? = nil
+    var durationFieldDelegate = TextFieldPickerInputDelegate()
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    var durationPickerBar: UIToolbar!
     
     private func setupUI() {
         // cancel button
@@ -42,40 +60,61 @@ class NewChallengeViewController : UIViewController {
                                for: .touchUpInside)
         // title text field
         titleField.delegate = self
-        
-        //duration button
-        durationButton.addTarget(self,
-                                 action: #selector(showDurationPicker(sender:)),
-                                 for: .touchUpInside)
-        
-        
+        durationPicker = UIPickerView()
         // duration picker
-        durationPicker.isHidden = true
         durationPicker.delegate = self
         durationPicker.dataSource = self
         durationPicker.showsSelectionIndicator = true
-        
+        durationPicker.backgroundColor? = UIColor.black
         // keyboard management
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeKeyboard(sender:)))
         self.view.addGestureRecognizer(tap)
+        
+        durationField.delegate = durationFieldDelegate
+        durationField.inputView = durationPicker
+        
+        durationPickerBar = UIToolbar()
+        
+        durationPickerBar.barStyle = .blackTranslucent
+        durationPickerBar.isUserInteractionEnabled = true
+        let doneBarItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(closePicker(sender:)))
+        doneBarItem.tintColor = UIColor.lightGray
+        durationPickerBar.setItems([doneBarItem], animated: false)
+        durationPickerBar.sizeToFit()
+        
+        durationField.inputAccessoryView = durationPickerBar
+        
+        titleField.padLeft(points: 12)
+        durationField.padLeft(points: 12)
+        
+        titleField.layer.cornerRadius = 4
+        titleField.clipsToBounds = true
+        durationField.layer.cornerRadius = 4
+        durationField.clipsToBounds = true
+    }
+    
+    @objc
+    func closePicker(sender: Any) {
+        durationField.resignFirstResponder()
     }
     
     @objc
     func closeKeyboard(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
-        self.durationPicker.isHidden = true
     }
     
     @objc
     func cancel(sender: UIBarButtonItem) {
+        print("cancelling")
         dismissSelf()
     }
     
     private func dismissSelf() {
-        if(self.isBeingPresented) {
-            self.dismiss(animated: true, completion: nil)
+        if let nav = self.navigationController {
+            nav.popViewController(animated: true)
         } else {
-            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+            print("dismissing")
         }
     }
     
@@ -84,18 +123,8 @@ class NewChallengeViewController : UIViewController {
         dismissSelf()
     }
     
-    @objc
-    func showDurationPicker(sender: UIButton) {
-        if(durationPicker.isHidden) {
-            durationPicker.isHidden = false
-        }
-    }
-    
     func updateDisplayDuration(_ display: String?) {
-        self
-            .durationButton
-            .titleLabel?
-            .text = display
+        durationField.text = display
     }
     
     func validate() {

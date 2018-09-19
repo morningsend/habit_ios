@@ -37,6 +37,7 @@
 		FE643564215154D3000FEB1D /* ChallengeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE643551215154D3000FEB1D /* ChallengeInfoViewController.swift */; };
 		FE643566215156B2000FEB1D /* ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE643565215156B2000FEB1D /* ChallengeTests.swift */; };
 		FE64356921516663000FEB1D /* ChallengesExpirationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64356821516663000FEB1D /* ChallengesExpirationTask.swift */; };
+		FE8BAD152152A71B00763EE6 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD142152A71B00763EE6 /* UITextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		FE643551215154D3000FEB1D /* ChallengeInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeInfoViewController.swift; sourceTree = "<group>"; };
 		FE643565215156B2000FEB1D /* ChallengeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTests.swift; sourceTree = "<group>"; };
 		FE64356821516663000FEB1D /* ChallengesExpirationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesExpirationTask.swift; sourceTree = "<group>"; };
+		FE8BAD142152A71B00763EE6 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 			children = (
 				FE64354E215154D3000FEB1D /* EmptyChallengeView.swift */,
 				FE64354F215154D3000FEB1D /* Button.swift */,
+				FE8BAD142152A71B00763EE6 /* UITextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				FE643563215154D3000FEB1D /* ChallengeHomeViewController.swift in Sources */,
 				FE64355A215154D3000FEB1D /* RealmChallengeManager.swift in Sources */,
 				FE643561215154D3000FEB1D /* EmptyChallengeView.swift in Sources */,
+				FE8BAD152152A71B00763EE6 /* UITextField.swift in Sources */,
 				FE643560215154D3000FEB1D /* KeyboardManager.swift in Sources */,
 				FE3751E321514946003B4491 /* AppDelegate.swift in Sources */,
 				FE643559215154D3000FEB1D /* ChallengeTableViewCell.swift in Sources */,

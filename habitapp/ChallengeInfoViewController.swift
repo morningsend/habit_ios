@@ -19,6 +19,7 @@ class ChallengeInfoViewController : UIViewController {
         
         action.setTarget(target: self,
                          action: #selector(self.showActions(sender:)))
+        action.customView = UIButton(type: .infoLight)
     }
     
     @objc
@@ -43,10 +44,12 @@ class ChallengeInfoViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.preferLargeTitle = self.navigationController?.navigationBar.prefersLargeTitles ?? false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = self.preferLargeTitle
+        super.viewDidDisappear(animated)
     }
     
     static func challengeAlertActionController(

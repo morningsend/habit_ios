@@ -26,7 +26,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GQa-oT-CGe">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GQa-oT-CGe">
                                             <rect key="frame" x="20" y="8" width="335" height="76"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Drink 2L of Water for 30 days." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m00-TH-hOd">
@@ -42,9 +42,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="qWK-gp-2jp">
-                                                    <rect key="frame" x="4" y="72" width="327" height="4"/>
+                                                    <rect key="frame" x="0.0" y="74" width="335" height="2"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="4" id="lYI-ka-969"/>
+                                                        <constraint firstAttribute="height" constant="2" id="lYI-ka-969"/>
                                                     </constraints>
                                                     <color key="progressTintColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="trackTintColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -52,8 +52,8 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="qWK-gp-2jp" secondAttribute="trailing" constant="4" id="0ZR-2j-vqE"/>
-                                                <constraint firstItem="qWK-gp-2jp" firstAttribute="leading" secondItem="GQa-oT-CGe" secondAttribute="leading" constant="4" id="Ag7-Ld-dzI"/>
+                                                <constraint firstAttribute="trailing" secondItem="qWK-gp-2jp" secondAttribute="trailing" id="0ZR-2j-vqE"/>
+                                                <constraint firstItem="qWK-gp-2jp" firstAttribute="leading" secondItem="GQa-oT-CGe" secondAttribute="leading" id="Ag7-Ld-dzI"/>
                                                 <constraint firstItem="mKL-Zg-sZ7" firstAttribute="top" secondItem="m00-TH-hOd" secondAttribute="bottom" constant="-3" id="iHQ-cs-uRy"/>
                                                 <constraint firstItem="m00-TH-hOd" firstAttribute="leading" secondItem="GQa-oT-CGe" secondAttribute="leading" constant="26" id="nIF-1k-IlB"/>
                                                 <constraint firstAttribute="bottom" secondItem="qWK-gp-2jp" secondAttribute="bottom" id="owZ-6u-2ul"/>
@@ -98,7 +98,7 @@
                     <navigationItem key="navigationItem" title="My Challenges" largeTitleDisplayMode="always" id="ekf-Hd-2ff">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hdQ-Hl-wKB">
                             <connections>
-                                <segue destination="gR6-L1-Tly" kind="show" id="rJJ-P5-37x"/>
+                                <segue destination="gR6-L1-Tly" kind="presentation" id="Gw5-Eb-fzr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -148,42 +148,38 @@
             </objects>
             <point key="canvasLocation" x="198" y="9"/>
         </scene>
-        <!--New Challenge-->
+        <!--New Challenge View Controller-->
         <scene sceneID="Kgl-ds-s8U">
             <objects>
-                <viewController id="gR6-L1-Tly" customClass="NewChallengeViewController" customModule="habitapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewChallengeViewController" id="gR6-L1-Tly" customClass="NewChallengeViewController" customModule="habitapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yDN-CP-rAL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Le9-Ib-zLr">
-                                <rect key="frame" x="31" y="88" width="315" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Set duration" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wPl-1J-gbI">
+                                <rect key="frame" x="20" y="142" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Qda-qW-TeT"/>
+                                </constraints>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JiL-nM-A9f">
-                                <rect key="frame" x="31" y="134" width="315" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title=" Set Duration">
-                                    <color key="titleColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5m-KP-BbU" customClass="Button" customModule="habitapp" customModuleProvider="target">
-                                <rect key="frame" x="31" y="207" width="315" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5m-KP-BbU" customClass="Button" customModule="habitapp" customModuleProvider="target">
+                                <rect key="frame" x="20" y="230" width="335" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="P1k-TK-o5a"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <state key="normal" title="Create Challenge">
-                                    <color key="titleColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.57839273166751259" green="0.57361281079609194" blue="0.28081212625444507" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -193,35 +189,70 @@
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
-                                        <color key="value" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.69929713674670047" green="0.69492841498218405" blue="0.0079087908905895211" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qh6-cA-X9U">
-                                <rect key="frame" x="0.0" y="437" width="375" height="230"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="rf7-c5-Lcn">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </pickerView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="AEK-Nd-C7i"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="New Challenge" largeTitleDisplayMode="never" id="eIB-8V-ged">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hob-sO-Qky">
+                                            <color key="tintColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Add title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Le9-Ib-zLr">
+                                <rect key="frame" x="20" y="82" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LBX-o1-Iv4"/>
+                                </constraints>
+                                <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="s91-a2-41j" firstAttribute="trailing" secondItem="rf7-c5-Lcn" secondAttribute="trailing" id="9BH-Ho-ifY"/>
+                            <constraint firstItem="rf7-c5-Lcn" firstAttribute="top" secondItem="s91-a2-41j" secondAttribute="top" id="Cuq-Cj-Fbr"/>
+                            <constraint firstItem="s91-a2-41j" firstAttribute="trailing" secondItem="M5m-KP-BbU" secondAttribute="trailing" constant="20" id="FEO-hx-w9e"/>
+                            <constraint firstItem="Le9-Ib-zLr" firstAttribute="top" secondItem="rf7-c5-Lcn" secondAttribute="bottom" constant="18" id="Ov0-AN-oc0"/>
+                            <constraint firstItem="wPl-1J-gbI" firstAttribute="top" secondItem="Le9-Ib-zLr" secondAttribute="bottom" constant="20" id="S9v-GY-y0I"/>
+                            <constraint firstItem="rf7-c5-Lcn" firstAttribute="leading" secondItem="s91-a2-41j" secondAttribute="leading" id="Uj0-Rn-bwk"/>
+                            <constraint firstItem="M5m-KP-BbU" firstAttribute="leading" secondItem="s91-a2-41j" secondAttribute="leading" constant="20" id="X7E-bH-lot"/>
+                            <constraint firstItem="Le9-Ib-zLr" firstAttribute="leading" secondItem="s91-a2-41j" secondAttribute="leading" constant="20" id="akg-1h-YkJ"/>
+                            <constraint firstItem="s91-a2-41j" firstAttribute="trailing" secondItem="Le9-Ib-zLr" secondAttribute="trailing" constant="20" id="dTO-SX-1BW"/>
+                            <constraint firstItem="wPl-1J-gbI" firstAttribute="leading" secondItem="s91-a2-41j" secondAttribute="leading" constant="20" id="n0I-oY-FnN"/>
+                            <constraint firstItem="s91-a2-41j" firstAttribute="trailing" secondItem="wPl-1J-gbI" secondAttribute="trailing" constant="20" id="q37-Va-cTQ"/>
+                            <constraint firstItem="M5m-KP-BbU" firstAttribute="top" secondItem="wPl-1J-gbI" secondAttribute="bottom" constant="48" id="txy-MW-e2S"/>
+                            <constraint firstItem="rf7-c5-Lcn" firstAttribute="centerX" secondItem="s91-a2-41j" secondAttribute="centerX" id="uWk-mG-kHm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="s91-a2-41j"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Challenge" largeTitleDisplayMode="never" id="eIB-8V-ged">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hob-sO-Qky">
-                            <color key="tintColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="cancelBarButton" destination="hob-sO-Qky" id="h1r-LI-bGb"/>
                         <outlet property="createButton" destination="M5m-KP-BbU" id="tzu-Ho-Cuf"/>
-                        <outlet property="durationButton" destination="JiL-nM-A9f" id="1Id-7x-gh8"/>
-                        <outlet property="durationPicker" destination="qh6-cA-X9U" id="yyO-JQ-nGi"/>
+                        <outlet property="durationField" destination="wPl-1J-gbI" id="yVd-R8-4Nu"/>
                         <outlet property="titleField" destination="Le9-Ib-zLr" id="b1N-Da-SbR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaJ-2o-ubK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1504.8" y="912.5937031484259"/>
+            <point key="canvasLocation" x="1422" y="913"/>
         </scene>
         <!--Challenge Info View Controller-->
         <scene sceneID="V2K-k8-IbP">

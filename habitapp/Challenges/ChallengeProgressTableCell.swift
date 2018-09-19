@@ -11,12 +11,26 @@ import UIKit
 import M13Checkbox
 
 protocol ChallengeProgressActions {
-    func markDown(day: Int) -> Void
+    func markAsDone(challengeId: String, day: Int) -> Void
+    func markAsSkipped(challengeId: String, day: Int) -> Void
+    func showDetail(challengeId: String) -> Void
 }
 
-class ChallengeProgressTableCell : UITableViewCell {
+protocol ChallengeProgressTableCellView {
+    var title: String { get set }
+    var id: String { get set }
+    var progress: Float { get set }
+    var daysAgoStarted: Int { get set }
+}
+
+class ChallengeProgressTableCell : UITableViewCell, ChallengeProgressTableCellView {
+    var title: String = ""
+    var progress: Float = 0
+    var daysAgoStarted: Int = 0
+    var id: String = ""
     public static let reuseId : String = "ChallengeProgressTableCell"
     
+    @IBOutlet var dayLabel: UILabel!
     @IBOutlet var checkbox: M13Checkbox! {
         didSet {
             print("hello checkbox")
@@ -26,7 +40,6 @@ class ChallengeProgressTableCell : UITableViewCell {
         }
     }
     
-    @IBOutlet var dayLabel: UILabel!
     
     public var progressDelegate: ChallengeProgressActions? = nil
     
@@ -46,7 +59,6 @@ class ChallengeProgressTableCell : UITableViewCell {
         print(sender.checkState)
         switch(sender.checkState) {
         case .checked:
-            progressDelegate?.markDown(day: 0)
             break
         default:
             break
