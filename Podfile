@@ -24,6 +24,13 @@ target 'habitapp' do
     pod 'Quick'
     pod 'Nimble'
   end
+
+  target 'today' do
+    pod 'SnapKit'
+    pod 'Charts'
+    pod 'RealmSwift'
+    pod 'M13Checkbox'
+  end
   
 end
 

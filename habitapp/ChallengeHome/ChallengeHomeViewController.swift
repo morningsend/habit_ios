@@ -9,6 +9,13 @@
 import UIKit
 import SnapKit
 
+protocol ChallengeHomeView {
+    
+}
+
+protocol ChallengeHomeViewModel {
+    
+}
 class ChallengeHomeViewController: UITableViewController {
     var emptyView: UIView!
     

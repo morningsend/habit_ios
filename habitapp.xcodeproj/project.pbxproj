@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4991E66FD64E0202F088CE19 /* Pods_habitapp_today.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018C93687013D8AA059DDE53 /* Pods_habitapp_today.framework */; };
 		AF0D3A62CC1D5F7CA954B42F /* Pods_habitappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3159BF505ECA9BDFB21808E /* Pods_habitappTests.framework */; };
+		AFD3220A26FB27939994C575 /* Pods_habitapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8BAD322153CB5C00763EE6 /* Pods_habitapp.framework */; };
 		B4980600FFCB14FB162C4F76 /* Pods_habitapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA3B8A854214252780CABA /* Pods_habitapp.framework */; };
 		E5A39F3D1E1920C4A842F4CD /* Pods_habitappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12396B5CA1099D050993A254 /* Pods_habitappUITests.framework */; };
 		FE3751E321514946003B4491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3751E221514946003B4491 /* AppDelegate.swift */; };
@@ -38,6 +40,16 @@
 		FE643566215156B2000FEB1D /* ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE643565215156B2000FEB1D /* ChallengeTests.swift */; };
 		FE64356921516663000FEB1D /* ChallengesExpirationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64356821516663000FEB1D /* ChallengesExpirationTask.swift */; };
 		FE8BAD152152A71B00763EE6 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD142152A71B00763EE6 /* UITextField.swift */; };
+		FE8BAD172152AB8D00763EE6 /* ChallengeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD162152AB8D00763EE6 /* ChallengeTableViewModel.swift */; };
+		FE8BAD1A2153C80800763EE6 /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8BAD192153C80800763EE6 /* OnBoarding.storyboard */; };
+		FE8BAD1C2153C93700763EE6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD1B2153C93700763EE6 /* OnboardingViewController.swift */; };
+		FE8BAD232153CA1800763EE6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8BAD222153CA1800763EE6 /* NotificationCenter.framework */; };
+		FE8BAD262153CA1800763EE6 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD252153CA1800763EE6 /* TodayViewController.swift */; };
+		FE8BAD292153CA1800763EE6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8BAD272153CA1800763EE6 /* MainInterface.storyboard */; };
+		FE8BAD2D2153CA1800763EE6 /* today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FE8BAD212153CA1800763EE6 /* today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FE8BAD332153CB5C00763EE6 /* Pods_habitapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8BAD322153CB5C00763EE6 /* Pods_habitapp.framework */; };
+		FE8BAD352153CCD500763EE6 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD342153CCD500763EE6 /* TaskList.swift */; };
+		FE8BAD372153CD5900763EE6 /* TaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD362153CD5900763EE6 /* TaskListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,18 +67,42 @@
 			remoteGlobalIDString = FE3751DE21514946003B4491;
 			remoteInfo = habitapp;
 		};
+		FE8BAD2B2153CA1800763EE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE3751D721514946003B4491 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE8BAD202153CA1800763EE6;
+			remoteInfo = today;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FE8BAD312153CA1800763EE6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FE8BAD2D2153CA1800763EE6 /* today.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		018C93687013D8AA059DDE53 /* Pods_habitapp_today.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_habitapp_today.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12396B5CA1099D050993A254 /* Pods_habitappUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_habitappUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CF3807A889E9052F8BAD69 /* Pods-habitapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-habitapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-habitapp/Pods-habitapp.debug.xcconfig"; sourceTree = "<group>"; };
 		2DD21F6AAB4ECB2DE01AE3B4 /* Pods-habitapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-habitapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-habitapp/Pods-habitapp.release.xcconfig"; sourceTree = "<group>"; };
 		4E626337C084D34F473CC245 /* Pods-habitappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-habitappTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-habitappTests/Pods-habitappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5BCA3B8A854214252780CABA /* Pods_habitapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_habitapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB25A252CBBBDB041B42371C /* Pods-habitappUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-habitappUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-habitappUITests/Pods-habitappUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C23FF2CA23D8F4ECF5B67AB6 /* Pods-habitapp-today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-habitapp-today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-habitapp-today/Pods-habitapp-today.debug.xcconfig"; sourceTree = "<group>"; };
 		D0626000C818D0616D214B3F /* Pods-habitappUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-habitappUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-habitappUITests/Pods-habitappUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E3159BF505ECA9BDFB21808E /* Pods_habitappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_habitappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44121F7DB502515CAB89CB0 /* Pods-habitappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-habitappTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-habitappTests/Pods-habitappTests.release.xcconfig"; sourceTree = "<group>"; };
+		FC220F78B4A0131ECDD6D78C /* Pods-habitapp-today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-habitapp-today.release.xcconfig"; path = "Pods/Target Support Files/Pods-habitapp-today/Pods-habitapp-today.release.xcconfig"; sourceTree = "<group>"; };
 		FE3751DF21514946003B4491 /* habitapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = habitapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3751E221514946003B4491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE3751E721514946003B4491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +137,17 @@
 		FE643565215156B2000FEB1D /* ChallengeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTests.swift; sourceTree = "<group>"; };
 		FE64356821516663000FEB1D /* ChallengesExpirationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesExpirationTask.swift; sourceTree = "<group>"; };
 		FE8BAD142152A71B00763EE6 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		FE8BAD162152AB8D00763EE6 /* ChallengeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewModel.swift; sourceTree = "<group>"; };
+		FE8BAD192153C80800763EE6 /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
+		FE8BAD1B2153C93700763EE6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		FE8BAD212153CA1800763EE6 /* today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE8BAD222153CA1800763EE6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		FE8BAD252153CA1800763EE6 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		FE8BAD282153CA1800763EE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		FE8BAD2A2153CA1800763EE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE8BAD322153CB5C00763EE6 /* Pods_habitapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_habitapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE8BAD342153CCD500763EE6 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
+		FE8BAD362153CD5900763EE6 /* TaskListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4980600FFCB14FB162C4F76 /* Pods_habitapp.framework in Frameworks */,
+				AFD3220A26FB27939994C575 /* Pods_habitapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,15 +176,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE8BAD1E2153CA1800763EE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE8BAD332153CB5C00763EE6 /* Pods_habitapp.framework in Frameworks */,
+				FE8BAD232153CA1800763EE6 /* NotificationCenter.framework in Frameworks */,
+				4991E66FD64E0202F088CE19 /* Pods_habitapp_today.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		7DF384AD8F4701320C36DBCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE8BAD322153CB5C00763EE6 /* Pods_habitapp.framework */,
 				5BCA3B8A854214252780CABA /* Pods_habitapp.framework */,
 				E3159BF505ECA9BDFB21808E /* Pods_habitappTests.framework */,
 				12396B5CA1099D050993A254 /* Pods_habitappUITests.framework */,
+				FE8BAD222153CA1800763EE6 /* NotificationCenter.framework */,
+				018C93687013D8AA059DDE53 /* Pods_habitapp_today.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -150,6 +211,8 @@
 				F44121F7DB502515CAB89CB0 /* Pods-habitappTests.release.xcconfig */,
 				D0626000C818D0616D214B3F /* Pods-habitappUITests.debug.xcconfig */,
 				BB25A252CBBBDB041B42371C /* Pods-habitappUITests.release.xcconfig */,
+				C23FF2CA23D8F4ECF5B67AB6 /* Pods-habitapp-today.debug.xcconfig */,
+				FC220F78B4A0131ECDD6D78C /* Pods-habitapp-today.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -160,6 +223,7 @@
 				FE3751E121514946003B4491 /* habitapp */,
 				FE3751F621514946003B4491 /* habitappTests */,
 				FE37520121514946003B4491 /* habitappUITests */,
+				FE8BAD242153CA1800763EE6 /* today */,
 				FE3751E021514946003B4491 /* Products */,
 				81BED14B61E3B96551FF1E9F /* Pods */,
 				7DF384AD8F4701320C36DBCD /* Frameworks */,
@@ -172,6 +236,7 @@
 				FE3751DF21514946003B4491 /* habitapp.app */,
 				FE3751F321514946003B4491 /* habitappTests.xctest */,
 				FE3751FE21514946003B4491 /* habitappUITests.xctest */,
+				FE8BAD212153CA1800763EE6 /* today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,17 +247,19 @@
 				FE64356721516653000FEB1D /* Background */,
 				FE643539215154D3000FEB1D /* Assets.xcassets */,
 				FE643546215154D3000FEB1D /* Base.lproj */,
+				FE8BAD182152AC3800763EE6 /* ChallengeHome */,
 				FE64353B215154D3000FEB1D /* Challenges */,
 				FE64354D215154D3000FEB1D /* Components */,
 				FE64354B215154D3000FEB1D /* Managers */,
 				FE64353A215154D3000FEB1D /* NewChallengeViewController.swift */,
-				FE643550215154D3000FEB1D /* ChallengeHomeViewController.swift */,
 				FE643551215154D3000FEB1D /* ChallengeInfoViewController.swift */,
 				FE3751E221514946003B4491 /* AppDelegate.swift */,
 				FE3751E621514946003B4491 /* Main.storyboard */,
 				FE3751E921514946003B4491 /* Assets.xcassets */,
 				FE3751EB21514946003B4491 /* LaunchScreen.storyboard */,
 				FE3751EE21514946003B4491 /* Info.plist */,
+				FE8BAD192153C80800763EE6 /* OnBoarding.storyboard */,
+				FE8BAD1B2153C93700763EE6 /* OnboardingViewController.swift */,
 			);
 			path = habitapp;
 			sourceTree = "<group>";
@@ -224,7 +291,6 @@
 				FE64353E215154D3000FEB1D /* Challenge.swift */,
 				FE64353F215154D3000FEB1D /* ChallengeDetailViewModel.swift */,
 				FE643540215154D3000FEB1D /* CompletionRecord.swift */,
-				FE643541215154D3000FEB1D /* ChallengeTableViewCell.swift */,
 				FE643542215154D3000FEB1D /* RealmChallengeManager.swift */,
 				FE643543215154D3000FEB1D /* ChallengeProgressTableViewController.swift */,
 				FE643544215154D3000FEB1D /* Configuration.swift */,
@@ -268,6 +334,28 @@
 			path = Background;
 			sourceTree = "<group>";
 		};
+		FE8BAD182152AC3800763EE6 /* ChallengeHome */ = {
+			isa = PBXGroup;
+			children = (
+				FE643550215154D3000FEB1D /* ChallengeHomeViewController.swift */,
+				FE8BAD162152AB8D00763EE6 /* ChallengeTableViewModel.swift */,
+				FE643541215154D3000FEB1D /* ChallengeTableViewCell.swift */,
+			);
+			path = ChallengeHome;
+			sourceTree = "<group>";
+		};
+		FE8BAD242153CA1800763EE6 /* today */ = {
+			isa = PBXGroup;
+			children = (
+				FE8BAD252153CA1800763EE6 /* TodayViewController.swift */,
+				FE8BAD272153CA1800763EE6 /* MainInterface.storyboard */,
+				FE8BAD2A2153CA1800763EE6 /* Info.plist */,
+				FE8BAD342153CCD500763EE6 /* TaskList.swift */,
+				FE8BAD362153CD5900763EE6 /* TaskListCell.swift */,
+			);
+			path = today;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -280,10 +368,12 @@
 				FE3751DC21514946003B4491 /* Frameworks */,
 				FE3751DD21514946003B4491 /* Resources */,
 				CE2A8A19E86E664E6FEF4AA1 /* [CP] Embed Pods Frameworks */,
+				FE8BAD312153CA1800763EE6 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FE8BAD2C2153CA1800763EE6 /* PBXTargetDependency */,
 			);
 			name = habitapp;
 			productName = habitapp;
@@ -330,6 +420,24 @@
 			productReference = FE3751FE21514946003B4491 /* habitappUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		FE8BAD202153CA1800763EE6 /* today */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE8BAD2E2153CA1800763EE6 /* Build configuration list for PBXNativeTarget "today" */;
+			buildPhases = (
+				56D3885A6949C287CEE022CF /* [CP] Check Pods Manifest.lock */,
+				FE8BAD1D2153CA1800763EE6 /* Sources */,
+				FE8BAD1E2153CA1800763EE6 /* Frameworks */,
+				FE8BAD1F2153CA1800763EE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = today;
+			productName = today;
+			productReference = FE8BAD212153CA1800763EE6 /* today.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -357,6 +465,9 @@
 						LastSwiftMigration = 1000;
 						TestTargetID = FE3751DE21514946003B4491;
 					};
+					FE8BAD202153CA1800763EE6 = {
+						CreatedOnToolsVersion = 10.0;
+					};
 				};
 			};
 			buildConfigurationList = FE3751DA21514946003B4491 /* Build configuration list for PBXProject "habitapp" */;
@@ -375,6 +486,7 @@
 				FE3751DE21514946003B4491 /* habitapp */,
 				FE3751F221514946003B4491 /* habitappTests */,
 				FE3751FD21514946003B4491 /* habitappUITests */,
+				FE8BAD202153CA1800763EE6 /* today */,
 			);
 		};
 /* End PBXProject section */
@@ -388,6 +500,7 @@
 				FE3751EA21514946003B4491 /* Assets.xcassets in Resources */,
 				FE643552215154D3000FEB1D /* Assets.xcassets in Resources */,
 				FE64355F215154D3000FEB1D /* Main.storyboard in Resources */,
+				FE8BAD1A2153C80800763EE6 /* OnBoarding.storyboard in Resources */,
 				FE64355E215154D3000FEB1D /* LaunchScreen.storyboard in Resources */,
 				FE3751E821514946003B4491 /* Main.storyboard in Resources */,
 			);
@@ -404,6 +517,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE8BAD1F2153CA1800763EE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE8BAD292153CA1800763EE6 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +547,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-habitappUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56D3885A6949C287CEE022CF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-habitapp-today-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -565,7 +708,9 @@
 				FE643564215154D3000FEB1D /* ChallengeInfoViewController.swift in Sources */,
 				FE643555215154D3000FEB1D /* ChallengeDefinition.swift in Sources */,
 				FE643554215154D3000FEB1D /* ChallengeManager.swift in Sources */,
+				FE8BAD1C2153C93700763EE6 /* OnboardingViewController.swift in Sources */,
 				FE64355D215154D3000FEB1D /* ChallengeProgressTableCell.swift in Sources */,
+				FE8BAD172152AB8D00763EE6 /* ChallengeTableViewModel.swift in Sources */,
 				FE643553215154D3000FEB1D /* NewChallengeViewController.swift in Sources */,
 				FE643557215154D3000FEB1D /* ChallengeDetailViewModel.swift in Sources */,
 				FE643563215154D3000FEB1D /* ChallengeHomeViewController.swift in Sources */,
@@ -600,6 +745,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE8BAD1D2153CA1800763EE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE8BAD262153CA1800763EE6 /* TodayViewController.swift in Sources */,
+				FE8BAD372153CD5900763EE6 /* TaskListCell.swift in Sources */,
+				FE8BAD352153CCD500763EE6 /* TaskList.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -612,6 +767,11 @@
 			isa = PBXTargetDependency;
 			target = FE3751DE21514946003B4491 /* habitapp */;
 			targetProxy = FE3751FF21514946003B4491 /* PBXContainerItemProxy */;
+		};
+		FE8BAD2C2153CA1800763EE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE8BAD202153CA1800763EE6 /* today */;
+			targetProxy = FE8BAD2B2153CA1800763EE6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -646,6 +806,14 @@
 				FE64354A215154D3000FEB1D /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FE8BAD272153CA1800763EE6 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE8BAD282153CA1800763EE6 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -773,6 +941,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20CF3807A889E9052F8BAD69 /* Pods-habitapp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9J2YT46347;
@@ -793,6 +962,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2DD21F6AAB4ECB2DE01AE3B4 /* Pods-habitapp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9J2YT46347;
@@ -898,6 +1068,46 @@
 			};
 			name = Release;
 		};
+		FE8BAD2F2153CA1800763EE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C23FF2CA23D8F4ECF5B67AB6 /* Pods-habitapp-today.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9J2YT46347;
+				INFOPLIST_FILE = today/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = us.smallteam.habitapp.today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FE8BAD302153CA1800763EE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC220F78B4A0131ECDD6D78C /* Pods-habitapp-today.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9J2YT46347;
+				INFOPLIST_FILE = today/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = us.smallteam.habitapp.today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -933,6 +1143,15 @@
 			buildConfigurations = (
 				FE37520E21514946003B4491 /* Debug */,
 				FE37520F21514946003B4491 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE8BAD2E2153CA1800763EE6 /* Build configuration list for PBXNativeTarget "today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE8BAD2F2153CA1800763EE6 /* Debug */,
+				FE8BAD302153CA1800763EE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
