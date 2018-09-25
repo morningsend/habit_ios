@@ -11,17 +11,22 @@ import UIKit
 import SnapKit
 
 protocol TaskListCellActions {
-    func done(id: String)
-    func skipped(id: String)
+    func done(_ cellView: TaskListCellView, id: String)
+    func skipped(_ cellView: TaskListCellView, id: String)
 }
+
 protocol TaskListCellView {
     var id: String { get set }
     var title: String { get set }
     var subtitle: String { get set }
     var eventHandler: TaskListCellActions? { get set }
+    
+    func asTableViewCell() -> UITableViewCell?
 }
 
 class TaskListCell : UITableViewCell, TaskListCellView {
+
+    
     var id: String = ""
 
     var title: String = "" {
@@ -44,6 +49,9 @@ class TaskListCell : UITableViewCell, TaskListCellView {
     private var doneButton : UIButton!
     private var skipButton: UIButton!
     
+    func asTableViewCell() -> UITableViewCell? {
+        return self
+    }
     private func setupUI() {
         doneButton = UIButton()
         doneButton.translatesAutoresizingMaskIntoConstraints = false
@@ -68,14 +76,15 @@ class TaskListCell : UITableViewCell, TaskListCellView {
         contentView.addSubview(skipButton)
         
     }
+    
     @objc
     func doneClicked(sender: Any) {
-        eventHandler?.done(id: id)
+        eventHandler?.done(self, id: id)
     }
     
     @objc
     func skipClicked(sender: Any) {
-        eventHandler?.skipped(id: id)
+        eventHandler?.skipped(self, id: id)
     }
     
     private func layoutUI() {

@@ -70,12 +70,17 @@ class Challenge : Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    override static func indexedProperties() -> [String] {
+        return ["startDate", "endDate"]
+    }
     
     /**
         comutes a score between [0, 1.0] to indicate completeness, 1.0 for completed, 0.0 for just started
      */
     func progress() -> Double {
-        return 0.0
+        let prog = (endDate.timeIntervalSinceReferenceDate - startDate.timeIntervalSinceReferenceDate)
+            - Date.timeIntervalSinceReferenceDate
+        return min(1.0, prog)
     }
     
     func markAsCompletedForDate(date: Date) -> Challenge {

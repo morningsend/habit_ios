@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol ChallengeManager {
     
     func abandonChallenge(challenge: Challenge) -> Void
-    func ongoingChallenges() -> Array<Challenge>
-    func completedChallenges() -> Array<Challenge>
-    func abandonedChallenges() -> Array<Challenge>
+    func ongoingChallenges() -> Results<Challenge>
+    func completedChallenges() -> Results<Challenge>
+    func abandonedChallenges() -> Results<Challenge>
     func getChallenge(id: Int) -> Challenge?
     func startNew(definition: ChallengeDefinition, date: Date?) -> Challenge?
-    func startOver(challenge: Challenge, date: Date?) -> Void
+    func startNew(title: String, days: Int, date: Date?) -> Challenge?
+    func startOver(challenge: Challenge, date: Date?) -> Challenge?
 }

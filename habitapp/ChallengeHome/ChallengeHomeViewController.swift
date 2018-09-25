@@ -8,36 +8,76 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 protocol ChallengeHomeView {
-    
+    var challenges: Results<Challenge>? { get set }
 }
 
-protocol ChallengeHomeViewModel {
-    
-}
-class ChallengeHomeViewController: UITableViewController {
+class ChallengeHomeViewController: UITableViewController, ChallengeHomeView {
     var emptyView: UIView!
+    var addButton: UIButton!
+    private var viewModel: ChallengeHomeViewModel!
+    private var refresh: UIRefreshControl!
+    private var notificationToken: NotificationToken?
     
-    let challenges: Array<String> = ["Drink 2L of water","Drink 2L of water"]
+    deinit{
+        //In latest Realm versions you just need to use this one-liner
+        notificationToken?.invalidate()
+    }
     
+    var challenges: Results<Challenge>? = nil {
+        didSet {
+            if challenges == nil || challenges!.count < 1 {
+                emptyView.isHidden = false
+                tableView?.isHidden = true
+            } else {
+                emptyView.isHidden = true
+                tableView?.isHidden = false
+            }
+            tableView?.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setupViewModel()
+        notificationToken = Store.shared.realm.observe { note, realm in
+            self.viewModel.getChallenges()
+        }
+    }
+    
+    private func setupViewModel() {
+        viewModel = ChallengeHomeViewModelImpl(RealmChallengeManager(realm: Store.shared.realm))
+        viewModel.bind(view: self)
+    }
+    
+    @objc
+    func reloadChallenges(sender: AnyObject?) {
+        self.refresh.beginRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            self.viewModel.getChallenges()
+            self.refresh.endRefreshing()
+        }
+    }
+    private func setupUI() {
+        guard self.navigationController != nil else {
+            return
+        }
         // Do any additional setup after loading the view, typically from a nib.
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.setupTableView()
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 80
         tableView.backgroundColor = UIColor.black
+        refresh = UIRefreshControl()
+        self.tableView.refreshControl = refresh
+        
+        refresh.addTarget(self,
+                          action: #selector(reloadChallenges(sender:)),
+                          for: .valueChanged)
         
         emptyView = EmptyChallengeView(frame: view.frame, label: "No challenges yet. Tap the plus button above to set one.")
-        setupTitle()
-    }
-    var addButton: UIButton!
-    
-    private func setupTitle() {
-        guard self.navigationController != nil else {
-            return
-        }
         
         addButton = UIButton(type: .system)
         addButton.tintColor = UIColor.white
@@ -66,42 +106,14 @@ class ChallengeHomeViewController: UITableViewController {
                             for: .touchUpInside)
     }
     
-    func setupTableView() {
-        tableView.showsVerticalScrollIndicator = false
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return challenges.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ChallengeTableViewCell.reuseId, for: indexPath) as! ChallengeTableViewCell
-        return cell
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Today"
-    }
-    
-    @objc func showNewChallengeView(sender: Any) {
-        if let vc = NewChallengeViewController.instantiateFromMainStoryboard() {
-            self.present(vc, animated: true, completion: nil)
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        if(challenges.count < 1) {
+        viewModel.getChallenges()
+        if challenges == nil || challenges!.count < 1 {
             self.view = emptyView
         } else {
             self.view = self.tableView
-            self.tableView.reloadData()
         }
         addButton.alpha = 1.0
         addButton.isEnabled = true
@@ -111,6 +123,48 @@ class ChallengeHomeViewController: UITableViewController {
         super.viewWillDisappear(animated)
         addButton.alpha = 0.0
         addButton.isEnabled = false
+    }
+    
+    
+    func setupTableView() {
+        tableView.showsVerticalScrollIndicator = false
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard challenges != nil else {
+            return 0
+        }
+        
+        return challenges!.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: ChallengeTableViewCell.reuseId, for: indexPath)
+        guard challenges != nil else {
+            return cell
+        }
+        
+        if let challengeCell = cell as? ChallengeTableViewCell {
+            let challenge = challenges![indexPath.row]
+            challengeCell.title = challenge.definition?.title ?? "<challenge>"
+        }
+        return cell
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Ongoing"
+    }
+    
+    @objc func showNewChallengeView(sender: Any) {
+        if let vc = NewChallengeViewController.instantiateFromMainStoryboard() {
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {

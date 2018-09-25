@@ -50,6 +50,11 @@
 		FE8BAD332153CB5C00763EE6 /* Pods_habitapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8BAD322153CB5C00763EE6 /* Pods_habitapp.framework */; };
 		FE8BAD352153CCD500763EE6 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD342153CCD500763EE6 /* TaskList.swift */; };
 		FE8BAD372153CD5900763EE6 /* TaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD362153CD5900763EE6 /* TaskListCell.swift */; };
+		FE8BAD3A2154109100763EE6 /* NewChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD392154109100763EE6 /* NewChallengeViewModel.swift */; };
+		FE8BAD3C215410AF00763EE6 /* NewChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD3B215410AF00763EE6 /* NewChallengeView.swift */; };
+		FE8BAD3E2159969B00763EE6 /* ChallengeDefinitionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD3D2159969B00763EE6 /* ChallengeDefinitionRepository.swift */; };
+		FE8BAD402159A78E00763EE6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD3F2159A78E00763EE6 /* Store.swift */; };
+		FE8BAD422159AE1300763EE6 /* ChallengeHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BAD412159AE1300763EE6 /* ChallengeHomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +153,11 @@
 		FE8BAD322153CB5C00763EE6 /* Pods_habitapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_habitapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8BAD342153CCD500763EE6 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		FE8BAD362153CD5900763EE6 /* TaskListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCell.swift; sourceTree = "<group>"; };
+		FE8BAD392154109100763EE6 /* NewChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallengeViewModel.swift; sourceTree = "<group>"; };
+		FE8BAD3B215410AF00763EE6 /* NewChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallengeView.swift; sourceTree = "<group>"; };
+		FE8BAD3D2159969B00763EE6 /* ChallengeDefinitionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDefinitionRepository.swift; sourceTree = "<group>"; };
+		FE8BAD3F2159A78E00763EE6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		FE8BAD412159AE1300763EE6 /* ChallengeHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeHomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,11 +257,11 @@
 				FE64356721516653000FEB1D /* Background */,
 				FE643539215154D3000FEB1D /* Assets.xcassets */,
 				FE643546215154D3000FEB1D /* Base.lproj */,
+				FE8BAD382154106900763EE6 /* NewChallenge */,
 				FE8BAD182152AC3800763EE6 /* ChallengeHome */,
 				FE64353B215154D3000FEB1D /* Challenges */,
 				FE64354D215154D3000FEB1D /* Components */,
 				FE64354B215154D3000FEB1D /* Managers */,
-				FE64353A215154D3000FEB1D /* NewChallengeViewController.swift */,
 				FE643551215154D3000FEB1D /* ChallengeInfoViewController.swift */,
 				FE3751E221514946003B4491 /* AppDelegate.swift */,
 				FE3751E621514946003B4491 /* Main.storyboard */,
@@ -260,6 +270,7 @@
 				FE3751EE21514946003B4491 /* Info.plist */,
 				FE8BAD192153C80800763EE6 /* OnBoarding.storyboard */,
 				FE8BAD1B2153C93700763EE6 /* OnboardingViewController.swift */,
+				FE8BAD3F2159A78E00763EE6 /* Store.swift */,
 			);
 			path = habitapp;
 			sourceTree = "<group>";
@@ -295,6 +306,7 @@
 				FE643543215154D3000FEB1D /* ChallengeProgressTableViewController.swift */,
 				FE643544215154D3000FEB1D /* Configuration.swift */,
 				FE643545215154D3000FEB1D /* ChallengeProgressTableCell.swift */,
+				FE8BAD3D2159969B00763EE6 /* ChallengeDefinitionRepository.swift */,
 			);
 			path = Challenges;
 			sourceTree = "<group>";
@@ -340,6 +352,7 @@
 				FE643550215154D3000FEB1D /* ChallengeHomeViewController.swift */,
 				FE8BAD162152AB8D00763EE6 /* ChallengeTableViewModel.swift */,
 				FE643541215154D3000FEB1D /* ChallengeTableViewCell.swift */,
+				FE8BAD412159AE1300763EE6 /* ChallengeHomeViewModel.swift */,
 			);
 			path = ChallengeHome;
 			sourceTree = "<group>";
@@ -354,6 +367,16 @@
 				FE8BAD362153CD5900763EE6 /* TaskListCell.swift */,
 			);
 			path = today;
+			sourceTree = "<group>";
+		};
+		FE8BAD382154106900763EE6 /* NewChallenge */ = {
+			isa = PBXGroup;
+			children = (
+				FE64353A215154D3000FEB1D /* NewChallengeViewController.swift */,
+				FE8BAD392154109100763EE6 /* NewChallengeViewModel.swift */,
+				FE8BAD3B215410AF00763EE6 /* NewChallengeView.swift */,
+			);
+			path = NewChallenge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -709,18 +732,23 @@
 				FE643555215154D3000FEB1D /* ChallengeDefinition.swift in Sources */,
 				FE643554215154D3000FEB1D /* ChallengeManager.swift in Sources */,
 				FE8BAD1C2153C93700763EE6 /* OnboardingViewController.swift in Sources */,
+				FE8BAD402159A78E00763EE6 /* Store.swift in Sources */,
 				FE64355D215154D3000FEB1D /* ChallengeProgressTableCell.swift in Sources */,
 				FE8BAD172152AB8D00763EE6 /* ChallengeTableViewModel.swift in Sources */,
+				FE8BAD3A2154109100763EE6 /* NewChallengeViewModel.swift in Sources */,
 				FE643553215154D3000FEB1D /* NewChallengeViewController.swift in Sources */,
 				FE643557215154D3000FEB1D /* ChallengeDetailViewModel.swift in Sources */,
 				FE643563215154D3000FEB1D /* ChallengeHomeViewController.swift in Sources */,
 				FE64355A215154D3000FEB1D /* RealmChallengeManager.swift in Sources */,
+				FE8BAD3C215410AF00763EE6 /* NewChallengeView.swift in Sources */,
 				FE643561215154D3000FEB1D /* EmptyChallengeView.swift in Sources */,
 				FE8BAD152152A71B00763EE6 /* UITextField.swift in Sources */,
 				FE643560215154D3000FEB1D /* KeyboardManager.swift in Sources */,
 				FE3751E321514946003B4491 /* AppDelegate.swift in Sources */,
 				FE643559215154D3000FEB1D /* ChallengeTableViewCell.swift in Sources */,
+				FE8BAD3E2159969B00763EE6 /* ChallengeDefinitionRepository.swift in Sources */,
 				FE643562215154D3000FEB1D /* Button.swift in Sources */,
+				FE8BAD422159AE1300763EE6 /* ChallengeHomeViewModel.swift in Sources */,
 				FE643558215154D3000FEB1D /* CompletionRecord.swift in Sources */,
 				FE64355B215154D3000FEB1D /* ChallengeProgressTableViewController.swift in Sources */,
 				FE643556215154D3000FEB1D /* Challenge.swift in Sources */,

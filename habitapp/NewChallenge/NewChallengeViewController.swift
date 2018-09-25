@@ -15,7 +15,32 @@ class TextFieldPickerInputDelegate : NSObject, UITextFieldDelegate {
     }
 }
 
-class NewChallengeViewController : UIViewController {
+class NewChallengeViewController : UIViewController, NewChallengeView {
+    
+    var durationPicker: UIPickerView!
+    var newChallengeViewModel: NewChallengeViewModel!
+    
+    @IBOutlet var titleField: UITextField!
+    @IBOutlet var createButton: UIButton!
+    @IBOutlet var cancelBarButton: UIBarButtonItem!
+    @IBOutlet var durationField: UITextField!
+    
+    var durationPickerBar: UIToolbar!
+    var selectedDurationDays: Int? = nil
+    var challengeTitle: String? = nil
+    var durationFieldDelegate = TextFieldPickerInputDelegate()
+    
+    var durationDays: Int? = nil {
+        didSet {
+            selectedDurationDays = durationDays
+        }
+    }
+    
+    var buttonEnabled: Bool = false {
+        didSet {
+            createButton.isEnabled = buttonEnabled
+        }
+    }
     
     static func instantiateFromMainStoryboard() -> NewChallengeViewController? {
         return UIStoryboard(name: "Main", bundle: nil)
@@ -29,32 +54,24 @@ class NewChallengeViewController : UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setupUI()
+        setupViewModel()
     }
-    
-    var durationPicker: UIPickerView!
-    
-    @IBOutlet var titleField: UITextField!
-    @IBOutlet var createButton: UIButton!
-    @IBOutlet var cancelBarButton: UIBarButtonItem!
-    @IBOutlet var durationField: UITextField!
-    
-    var selectedDurationDays: Int? = nil
-    var challengeTitle: String? = nil
-    var durationFieldDelegate = TextFieldPickerInputDelegate()
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    var durationPickerBar: UIToolbar!
+    
+    private func setupViewModel() {
+        newChallengeViewModel = NewChallengeViewModelImpl(challengesManager: RealmChallengeManager(realm: Store.shared.realm))
+        newChallengeViewModel.bind(view: self)
+    }
     
     private func setupUI() {
         // cancel button
         cancelBarButton.setTarget(target: self, action: #selector(self.cancel(sender:)))
-        
-        
         // create button
-        createButton.isEnabled = false
+        createButton.isEnabled = buttonEnabled
         createButton.addTarget(self,
                                action: #selector(create(sender:)),
                                for: .touchUpInside)
@@ -120,6 +137,12 @@ class NewChallengeViewController : UIViewController {
     
     @objc
     func create(sender: UIButton) {
+        guard titleField.text != nil && selectedDurationDays != nil else {
+            return
+        }
+        
+        newChallengeViewModel.createNew(title: titleField.text!, days: selectedDurationDays!)
+
         dismissSelf()
     }
     

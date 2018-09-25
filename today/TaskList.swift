@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 
 class TaskList: NSObject, UITableViewDelegate, UITableViewDataSource, TaskListCellActions {
+    
+    private var tableView : UITableView?
+    private var rows = 8
+    func bind(tableView: UITableView) {
+        self.tableView = tableView
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskListCell.reuseId, for: indexPath)
         if let taskCell = cell as? TaskListCell {
@@ -25,19 +32,24 @@ class TaskList: NSObject, UITableViewDelegate, UITableViewDataSource, TaskListCe
         super.init()
     }
     
-    func done(id: String) {
+    func done(_ cellView: TaskListCellView, id: String) {
         print("done \(id)")
     }
     
-    func skipped(id: String) {
-        print("skipped \(id)")
+    func skipped(_ cellView: TaskListCellView, id: String) {
+        if let cell = cellView.asTableViewCell() {
+            if let indexPath = tableView?.indexPath(for: cell) {
+                tableView(tableView!, commit: .delete, forRowAt: indexPath)
+            }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return rows
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -50,7 +62,6 @@ class TaskList: NSObject, UITableViewDelegate, UITableViewDataSource, TaskListCe
             // share item at indexPath
             
         }
-        
         share.backgroundColor = UIColor.lightGray
         
         return [delete, share]
@@ -66,13 +77,20 @@ class TaskList: NSObject, UITableViewDelegate, UITableViewDataSource, TaskListCe
         if let cell = tableView.cellForRow(at: indexPath) {
             let aniamtedFrame = cell.frame.offsetBy(dx: -40, dy: 0)
             UIView.animate(withDuration: 0.3) {
-                cell.frame = aniamtedFrame
+                // cell.frame = aniamtedFrame
             }
         }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
+        switch(editingStyle) {
+        case .delete:
+            rows -= 1
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            break
+        default:
+            break
+        }
     }
     
 }

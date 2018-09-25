@@ -25,6 +25,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         taskList = TaskList()
         tableView = UITableView()
         allCompletedLabel = UILabel()
+        taskList.bind(tableView: tableView)
         
         allCompletedLabel.translatesAutoresizingMaskIntoConstraints = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +77,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's an update, use NCUpdateResult.NewData
         allCompletedLabel.isHidden = true
         tableView.isHidden = false
-        
         completionHandler(NCUpdateResult.newData)
     }
     

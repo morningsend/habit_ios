@@ -15,24 +15,16 @@ class ChallengeDefinition : Object {
     var id: String = ""
     
     @objc dynamic
-    var title: String = "" {
-        didSet {
-            
-        }
-    }
+    var title: String = ""
     
     @objc dynamic
-    var numberOfDays: Int = -1 {
-        didSet {
-            
-        }
-    }
+    var numberOfDays: Int = -1
     
     override static func primaryKey() -> String? {
         return "id"
     }
     
-    private func computePrimaryKey() {
+    func computePrimaryKey() {
         self.id = "\(title):\(numberOfDays)"
     }
 }

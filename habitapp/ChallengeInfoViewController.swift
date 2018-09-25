@@ -52,7 +52,7 @@ class ChallengeInfoViewController : UIViewController {
         super.viewDidDisappear(animated)
     }
     
-    static func challengeAlertActionController(
+    static func challengeAlertActionController (
         startOverHandler: ((UIAlertAction) -> Void)?,
         abandonHandler: ((UIAlertAction) -> Void)? ) -> UIAlertController {
         let alertController = UIAlertController(
