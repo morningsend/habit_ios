@@ -12,11 +12,41 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
+    private var firstTimeLaunch = false
+    private var showCongrats = false
+    private var storyBoard: UIStoryboard!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        window?.makeKeyAndVisible()
+        window?.rootViewController = storyBoard.instantiateInitialViewController()
+        if(firstTimeLaunch && window?.rootViewController != nil) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+                self.showOnboard(self.window!.rootViewController!)
+            }
+        }
+        
+        if(showCongrats) {
+            let vc = storyBoard.instantiateViewController(withIdentifier: String(describing: CongratsViewController.self))
+            self.window!.rootViewController?.present(vc, animated: true, completion: nil)
+        }
+        
         return true
+    }
+    
+    func showOnboard(_ parentViewController: UIViewController) {
+        let onboardViewController = self.storyBoard
+            .instantiateViewController(withIdentifier: String(describing: OnboardViewController.self))
+        window?
+            .rootViewController?
+            .present(
+                onboardViewController,
+                animated: true,
+                completion: nil
+        )
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

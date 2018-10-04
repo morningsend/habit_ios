@@ -9,9 +9,17 @@
 import Foundation
 import UIKit
 
-class ChallengeInfoViewController : UIViewController {
+protocol ChallengeInfoView {
+    var challengId: String { get set }
+}
+
+class ChallengeInfoViewController : UIViewController, ChallengeInfoView {
     var preferLargeTitle: Bool = false;
-    
+    var challengId: String = "" {
+        didSet {
+            
+        }
+    }
     @IBOutlet var action: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -88,5 +96,15 @@ extension UIBarButtonItem {
     func setTarget(target: AnyObject?, action: Selector?) -> Void {
         self.action = action
         self.target = target
+    }
+}
+
+extension ChallengeInfoViewController {
+    static func fromMainStoryboard(challengeId id: String) -> ChallengeInfoViewController? {
+        let vc = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: String(describing: ChallengeInfoViewController.self))
+            as? ChallengeInfoViewController
+        
+        return vc
     }
 }

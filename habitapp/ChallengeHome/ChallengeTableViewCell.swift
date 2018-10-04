@@ -36,7 +36,7 @@ class ChallengeTableViewCell : UITableViewCell, ChallengeTableCellView {
     
     var progress: Float = 0.0 {
         didSet {
-            progressBar.progress = progress
+            
         }
     }
     
@@ -46,7 +46,7 @@ class ChallengeTableViewCell : UITableViewCell, ChallengeTableCellView {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateStartedLabel: UILabel!
-    @IBOutlet var progressBar: UIProgressView!
+    
     
     func configure(id: String?,
                    title: String?,
@@ -55,7 +55,6 @@ class ChallengeTableViewCell : UITableViewCell, ChallengeTableCellView {
         self.challengeId = id ?? ""
         self.title = title ?? ""
         self.daysCompleted = 0
-        self.progress = Float(progress)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

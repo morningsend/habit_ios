@@ -16,10 +16,15 @@ protocol ChallengeHomeView {
 
 class ChallengeHomeViewController: UITableViewController, ChallengeHomeView {
     var emptyView: UIView!
-    var addButton: UIButton!
     private var viewModel: ChallengeHomeViewModel!
+    
+    @IBOutlet var newButton: UINavigationItem!
+    
+    
     private var refresh: UIRefreshControl!
     private var notificationToken: NotificationToken?
+    
+    private var segments: UISegmentedControl!
     
     deinit{
         //In latest Realm versions you just need to use this one-liner
@@ -47,6 +52,27 @@ class ChallengeHomeViewController: UITableViewController, ChallengeHomeView {
         }
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.clear
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 16
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+        //return UIStatusBarStyle.default   // Make dark again
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, done) in
+            print("Delete challenge")
+            done(true)
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
     private func setupViewModel() {
         viewModel = ChallengeHomeViewModelImpl(RealmChallengeManager(realm: Store.shared.realm))
         viewModel.bind(view: self)
@@ -65,13 +91,13 @@ class ChallengeHomeViewController: UITableViewController, ChallengeHomeView {
             return
         }
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+    self.navigationController?.navigationBar.prefersLargeTitles = true
         self.setupTableView()
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 80
         tableView.backgroundColor = UIColor.black
         refresh = UIRefreshControl()
-        self.tableView.refreshControl = refresh
+        //self.tableView.refreshControl = refresh
         
         refresh.addTarget(self,
                           action: #selector(reloadChallenges(sender:)),
@@ -79,31 +105,32 @@ class ChallengeHomeViewController: UITableViewController, ChallengeHomeView {
         
         emptyView = EmptyChallengeView(frame: view.frame, label: "No challenges yet. Tap the plus button above to set one.")
         
-        addButton = UIButton(type: .system)
-        addButton.tintColor = UIColor.white
-        addButton.backgroundColor = UIColor.darkGray
-        addButton.setTitle("+", for: .normal)
-        addButton.layer.cornerRadius = 16.0
-        let container = (self.navigationController?.navigationBar)!
         
-        container.items?.forEach({ (item) in
-            item.rightBarButtonItem?.tintColor = UIColor.clear
-        })
+        newButton.rightBarButtonItem?.setTarget(
+            target: self,
+            action: #selector(showNewChallengeView(sender:))
+        )
         
-        container.addSubview(addButton)
+        segments = UISegmentedControl(items: ["Active", "Done"])
+        segments.tintColor = UIColor.white
+        segments.selectedSegmentIndex = 0
+        segments.addTarget(self, action: #selector(segmentValueChanged(sender:)), for: .valueChanged)
+        segments.translatesAutoresizingMaskIntoConstraints = false
+    self.navigationController?.navigationBar.addSubview(segments)
         
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.snp.makeConstraints { (make) in
-            make.width.equalTo(32)
-            make.height.equalTo(32)
-            make.right.equalTo(container).offset(-16)
-            make.bottom.equalTo(container).offset(-16)
+        let container = self.navigationController!.navigationBar
+        
+        segments.snp.makeConstraints { (make) in
+            make.centerX.equalTo(container.snp.centerX)
+            make.top
+                .equalTo(container.snp.top)
+                .offset(12)
         }
-        addButton.alpha = 0.0
-        addButton.isEnabled = false
-        addButton.addTarget(self,
-                            action: #selector(showNewChallengeView(sender:)),
-                            for: .touchUpInside)
+    }
+    
+    @objc
+    func segmentValueChanged(sender: UISegmentedControl) {
+        print(sender.selectedSegmentIndex)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,14 +142,18 @@ class ChallengeHomeViewController: UITableViewController, ChallengeHomeView {
         } else {
             self.view = self.tableView
         }
-        addButton.alpha = 1.0
-        addButton.isEnabled = true
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        guard challenges != nil else {
+            return 0
+        }
+        
+        return challenges!.count
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        addButton.alpha = 0.0
-        addButton.isEnabled = false
     }
     
     
@@ -130,16 +161,9 @@ class ChallengeHomeViewController: UITableViewController, ChallengeHomeView {
         tableView.showsVerticalScrollIndicator = false
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard challenges != nil else {
-            return 0
-        }
-        
-        return challenges!.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -150,15 +174,11 @@ class ChallengeHomeViewController: UITableViewController, ChallengeHomeView {
         }
         
         if let challengeCell = cell as? ChallengeTableViewCell {
-            let challenge = challenges![indexPath.row]
+            let challenge = challenges![indexPath.section]
             challengeCell.title = challenge.definition?.title ?? "<challenge>"
         }
         return cell
         
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Ongoing"
     }
     
     @objc func showNewChallengeView(sender: Any) {
